@@ -1,0 +1,34 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: python app.py
+    volumes:
+      - .:/code
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+      LINE_CHANNEL_SECRET: d54dc788d96f88552a2992dddab44f7c
+      LINE_CHANNEL_ACCESS_TOKEN: Nzvk2dmP1xjVs6CQ1xDnaygi8cuQztstNNNToHhMcovLi3c83sUTZsQY5NMaidgK49M0kih/SOoOQxacYOMntExWDA919iptw4jyRf0etNhQ5fzB4TAJQ1pWPQCOwJwSFIxq1Q608qgHtYWq2bNtYAdB04t89/1O/w1cDnyilFU=
+      MYSQL_DATABASE: linebotdb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_HOST: db
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: linebotdb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
