@@ -1,0 +1,11 @@
+綱要：用 docker-compose 建構一個linebot的運行環境(要有DB)
+
+流程：
+1.MySQL創立一個資料庫&表格
+2.編寫我的LineBot: app.py
+3. 準備好docker-compose.yml
+4.編寫Dockerfile
+5. 寫好requirements.txt
+6. docker-compose up --build建構我的服務
+7. ngrok http 5000得到一個公開的URL
+8. 測試LineBot是否能正常連線
